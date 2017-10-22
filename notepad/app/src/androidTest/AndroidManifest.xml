@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.notepad.tests" >
+
+    <application>
+        <uses-library android:name="android.test.runner" />
+    </application>
+    <instrumentation
+        android:name="android.support.test.runner.AndroidJUnitRunner"
+        android:targetPackage="com.example.android.notepad">
+        <meta-data
+            android:name="screenCaptureProcessors"
+            android:value="com.google.firebase.testlab.screenshot.FirebaseScreenCaptureProcessor" />
+    </instrumentation>
+</manifest>
