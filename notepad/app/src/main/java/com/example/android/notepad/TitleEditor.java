@@ -16,7 +16,6 @@
 
 package com.example.android.notepad;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
@@ -24,14 +23,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.android.notepad.NotePad.NoteColumns;
 
 /**
  * An activity that will edit the title of a note. Displays a floating
  * window with a text field.
  */
-public class TitleEditor extends Activity implements View.OnClickListener {
+public class TitleEditor extends AppCompatActivity implements View.OnClickListener {
 
     /**
      * This is a special intent action that means "edit the title of a note".

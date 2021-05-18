@@ -37,13 +37,13 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
+            <intent-filter android:scheme="http">
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.EDIT" />
                 <action android:name="android.intent.action.PICK" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.dir/vnd.google.note" />
+                <data android:scheme="content" android:mimeType="vnd.android.cursor.dir/vnd.google.note" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT" />
@@ -55,16 +55,15 @@
         <activity
             android:name="NoteEditor"
             android:configChanges="keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Light">
+            android:theme="@style/Theme.AppCompat.Light">
             <!-- This filter says that we can view or edit the data of
                  a single note -->
             <intent-filter android:label="@string/resolve_edit">
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.EDIT" />
                 <action android:name="com.android.notes.action.EDIT_NOTE" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.google.note" />
+                <data android:scheme="content" android:mimeType="vnd.android.cursor.item/vnd.google.note" />
             </intent-filter>
 
             <!-- This filter says that we can create a new note inside
@@ -81,7 +80,7 @@
             android:name="TitleEditor"
             android:icon="@drawable/ic_menu_edit"
             android:label="@string/title_edit_title"
-            android:theme="@android:style/Theme.Dialog"
+            android:theme="@style/Theme.AppCompat.Dialog"
             android:windowSoftInputMode="stateVisible">
             <!-- This activity implements an alternative action that can be
                  performed on notes: editing their title.  It can be used as

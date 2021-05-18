@@ -16,13 +16,13 @@
 
 package com.example.android.notepad;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.LiveFolders;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class NotesLiveFolder extends Activity {
+public class NotesLiveFolder extends AppCompatActivity {
     /**
      * The URI for the Notes Live Folder content provider.
      */

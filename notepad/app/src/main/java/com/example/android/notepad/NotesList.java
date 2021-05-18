@@ -39,7 +39,7 @@ import com.example.android.notepad.NotePad.NoteColumns;
 /**
  * Displays a list of notes. Will display notes from the {@link android.net.Uri}
  * provided in the intent if there is one, otherwise defaults to displaying the
- * contents of the {@link NoteProvider}
+ * contents of the {@link NotePadProvider}
  */
 public class NotesList extends ListActivity {
     private static final String TAG = "NotesList";
