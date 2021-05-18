@@ -16,7 +16,7 @@
 
 package com.google.firebase.testlab.screenshot;
 
-import android.support.test.runner.screenshot.BasicScreenCaptureProcessor;
+import androidx.test.runner.screenshot.BasicScreenCaptureProcessor;
 
 import org.junit.Test;
 
@@ -24,7 +24,7 @@ import java.io.File;
 import java.lang.reflect.Method;
 
 /**
- * The {@link android.support.test.runner.screenshot.ScreenCaptureProcessor} to be used when running
+ * The {@link androidx.test.runner.screenshot.ScreenCaptureProcessor} to be used when running
  * tests on Firebase Test Lab.
  * <p>
  * <p>This will save the screenshot to a location where Firebase Test Lab can find them.
