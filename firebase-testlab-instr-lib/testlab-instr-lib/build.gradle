@@ -48,7 +48,7 @@ task androidSourcesJar(type: Jar) {
 project.afterEvaluate {
     publishing {
         publications {
-            aar(MavenPublication) {
+            maven(MavenPublication) {
                 groupId 'com.google.firebase'
                 artifactId 'testlab-instr-lib'
                 version android.defaultConfig.versionName
