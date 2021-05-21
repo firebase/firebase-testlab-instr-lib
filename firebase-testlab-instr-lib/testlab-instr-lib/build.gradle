@@ -57,34 +57,40 @@ publishing {
                 artifact androidSourcesJar
             }
 
-            pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
+            pom {
+                license {
+                    name = 'The Apache License, Version 2.0'
+                    url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                }
+                withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
 
-                // List all compile dependencies and write to POM
-                configurations.compile.getAllDependencies().each { Dependency dep ->
-                    if (dep.group == null || dep.version == null || dep.name == null ||
-                            dep.name == "unspecified")
-                        return // ignore invalid dependencies
+                    // List all compile dependencies and write to POM
+                    configurations.compile.getAllDependencies().each { Dependency dep ->
+                        if (dep.group == null || dep.version == null || dep.name == null ||
+                                dep.name == "unspecified")
+                            return // ignore invalid dependencies
 
-                    def dependencyNode = dependenciesNode.appendNode('dependency')
-                    dependencyNode.appendNode('groupId', dep.group)
-                    dependencyNode.appendNode('artifactId', dep.name)
-                    dependencyNode.appendNode('version', dep.version)
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', dep.group)
+                        dependencyNode.appendNode('artifactId', dep.name)
+                        dependencyNode.appendNode('version', dep.version)
 
-                    if (!dep.transitive) {
-                        // If this dependency is transitive, we should force exclude all its
-                        // dependencies them from the POM
-                        def exclusionNode =
-                                dependencyNode.appendNode('exclusions').appendNode('exclusion')
-                        exclusionNode.appendNode('groupId', '*')
-                        exclusionNode.appendNode('artifactId', '*')
-                    } else if (!dep.properties.excludeRules.empty) {
-                        // Otherwise add specified exclude rules
-                        def exclusionsNode = dependencyNode.appendNode('exclusions')
-                        dep.properties.excludeRules.each { ExcludeRule rule ->
-                            def exclusionNode = exclusionsNode.appendNode('exclusion')
-                            exclusionNode.appendNode('groupId', rule.group ?: '*')
-                            exclusionNode.appendNode('artifactId', rule.module ?: '*')
+                        if (!dep.transitive) {
+                            // If this dependency is transitive, we should force exclude all its
+                            // dependencies them from the POM
+                            def exclusionNode =
+                                    dependencyNode.appendNode('exclusions').appendNode('exclusion')
+                            exclusionNode.appendNode('groupId', '*')
+                            exclusionNode.appendNode('artifactId', '*')
+                        } else if (!dep.properties.excludeRules.empty) {
+                            // Otherwise add specified exclude rules
+                            def exclusionsNode = dependencyNode.appendNode('exclusions')
+                            dep.properties.excludeRules.each { ExcludeRule rule ->
+                                def exclusionNode = exclusionsNode.appendNode('exclusion')
+                                exclusionNode.appendNode('groupId', rule.group ?: '*')
+                                exclusionNode.appendNode('artifactId', rule.module ?: '*')
+                            }
                         }
                     }
                 }
