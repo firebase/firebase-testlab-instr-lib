@@ -24,7 +24,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0'
 
     // Firebase instrumentation lib
-    androidTestImplementation 'com.google.firebase:testlab-instr-lib:0.1'
+    androidTestImplementation 'com.google.firebase:testlab-instr-lib:0.2'
 
     // Espresso testing
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
