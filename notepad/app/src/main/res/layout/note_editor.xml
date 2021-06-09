@@ -24,4 +24,4 @@
     android:fadingEdge="vertical"
     android:gravity="top"
     android:textSize="22sp"
-    android:capitalize="sentences" />
+    android:inputType="textCapSentences" />

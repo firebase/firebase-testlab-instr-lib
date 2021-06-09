@@ -16,7 +16,6 @@
 
 package com.example.android.notepad;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
@@ -28,7 +27,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
@@ -36,7 +34,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.android.notepad.NotePad.NoteColumns;
 
 /**
@@ -44,7 +42,7 @@ import com.example.android.notepad.NotePad.NoteColumns;
  * either to simply view a note {@link android.content.Intent#ACTION_VIEW}, view and edit a note
  * {@link android.content.Intent#ACTION_EDIT}, or create a new note {@link android.content.Intent#ACTION_INSERT}.
  */
-public class NoteEditor extends Activity {
+public class NoteEditor extends AppCompatActivity {
     private static final String TAG = "NoteEditor";
 
     /**
@@ -76,7 +74,7 @@ public class NoteEditor extends Activity {
     /**
      * A custom EditText that draws lines between each line of text that is displayed.
      */
-    public static class LinedEditText extends EditText {
+    public static class LinedEditText extends androidx.appcompat.widget.AppCompatEditText {
         private Rect mRect;
         private Paint mPaint;
 
@@ -208,6 +206,7 @@ public class NoteEditor extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         // Save away the original text, so we still have it if the activity
         // needs to be killed while paused.
+        super.onSaveInstanceState(outState);
         outState.putString(ORIGINAL_CONTENT, mOriginalContent);
     }
 
